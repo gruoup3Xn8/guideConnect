@@ -13,6 +13,7 @@ import { Transport } from './module/transport/entities/transport.entity';
 import { Auth } from './module/auth/entities/auth.entity';
 import { Hotel } from './module/hotel/entities/hotel.entity';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
