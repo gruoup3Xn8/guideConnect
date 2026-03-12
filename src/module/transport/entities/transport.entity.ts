@@ -1,5 +1,6 @@
+import { BaseEntity } from "src/database/base.entity";
 import { Auth } from "src/module/auth/entities/auth.entity";
-import { BaseEntity, Entity, JoinColumn, ManyToOne } from "typeorm";
+import { Entity, JoinColumn, ManyToOne } from "typeorm";
 
 @Entity({name: "Transports"})
 export class Transport extends BaseEntity {
