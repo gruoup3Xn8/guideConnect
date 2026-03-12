@@ -1,11 +1,36 @@
-import { Auth } from "src/module/auth/entities/auth.entity";
-import { BaseEntity, Entity, JoinColumn, ManyToOne } from "typeorm";
+import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Auth } from '../../auth/entities/auth.entity';
+import { BaseEntity } from 'src/database/base.entity';
 
-@Entity({name: "Transports"})
+export enum TransportType {
+  BUS = 'bus',
+  CAR = 'car',
+  TRAIN = 'train',
+  TAXI = 'taxi',
+}
+
+@Entity({ name: 'transports' })
 export class Transport extends BaseEntity {
+  @Column()
+  provider_name: string; 
 
-    // RELATION
-    @ManyToOne(() => Auth, (auth) => auth.transport)
-    @JoinColumn({name: "auth_id"})
-    auth: Auth
+  @Column({
+    type: 'enum',
+    enum: TransportType,
+    default: TransportType.CAR,
+  })
+  type: TransportType;
+
+  @Column()
+  price: number;
+
+  @Column({ nullable: true })
+  capacity: number; 
+
+  @Column({ default: true })
+  is_available: boolean;
+
+  @ManyToOne(() => Auth, (auth) => auth.transport)
+  @JoinColumn({ name: 'auth_id' })
+  auth: Auth;
 }
