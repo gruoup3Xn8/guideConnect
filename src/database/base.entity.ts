@@ -5,8 +5,8 @@ export abstract class BaseEntity   {
  id: number
  
  @CreateDateColumn()
- created_at: Date
+ created_At: Date
 
  @UpdateDateColumn()
- updated_at: Date
+ updated_At: Date
 }

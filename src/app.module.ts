@@ -14,6 +14,7 @@ import { Auth } from './module/auth/entities/auth.entity';
 import { Hotel } from './module/hotel/entities/hotel.entity';
 import { ConfigModule } from '@nestjs/config';
 
+
 @Module({
   imports: [
     ConfigModule.forRoot({envFilePath: ".env", isGlobal: true}),
@@ -21,7 +22,7 @@ import { ConfigModule } from '@nestjs/config';
       type: "postgres",
       host: "localhost",
       port: 5432,
-      username: "posrtgres",
+      username: "postgres",
       password: String(process.env.DB_PASSWORD),
       database: String(process.env.DB_NAME),
       entities: [Guide, Event, Hotel, Restaurant, Transport, Auth],
