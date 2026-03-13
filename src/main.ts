@@ -3,7 +3,7 @@ import { AppModule } from "./app.module";
 import { ValidationPipe } from "@nestjs/common";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import * as express from "express";
-// import { HttpExceptionFilter } from "./common/filter/all-expextion.filters";
+import { HttpExceptionFilter } from "./common/filter/all-expextion.filters";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -16,13 +16,13 @@ async function bootstrap() {
     }),
   );
 
-  // app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   //  swagger
 
   const config = new DocumentBuilder()
-    .setTitle("FindWork project")
-    .setDescription("FindWork documantation")
+    .setTitle("GuideConnect project")
+    .setDescription("GuideConnect documantation")
     .setVersion("1.0.0")
     .addBearerAuth(
       {
