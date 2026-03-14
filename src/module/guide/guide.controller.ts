@@ -22,6 +22,21 @@ export class GuideController {
     return this.guideService.findOne(+id);
   }
 
+  @Get('search/:id')
+  searchId(@Param('id') id: string) {
+    return this.guideService.searchId(id);
+  }
+
+  @Get('check/:id')
+  checkGuide(@Param('id') id: string) {
+    return this.guideService.checkGuide(id);
+  }
+
+  @Get('info/:id')
+  getGuideInfo(@Param('id') id: string) {
+    return this.guideService.getGuideInfo(id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateGuideDto: UpdateGuideDto) {
     return this.guideService.update(+id, updateGuideDto);
