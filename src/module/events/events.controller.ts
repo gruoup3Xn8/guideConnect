@@ -24,7 +24,7 @@ export class EventsController {
 
   @Post()
   @UseGuards(AuthGuard)
-  @ApiBearerAuth()
+  @ApiBearerAuth("JWT-auth")
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Yangi event yaratish' })
   @ApiResponse({ status: 201, description: 'Event yaratildi' })
