@@ -3,6 +3,7 @@ import { BaseEntity } from "src/database/base.entity";
 import { Event } from "src/module/events/entities/event.entity";
 import { Guide } from "src/module/guide/entities/guide.entity";
 import { Hotel } from "src/module/hotel/entities/hotel.entity";
+import { Location } from "src/module/loacation/entities/loacation.entity";
 import { Restaurant } from "src/module/restaurants/entities/restaurant.entity";
 import { Transport } from "src/module/transport/entities/transport.entity";
 import { UserRole } from "src/shared/constant/user.role";
@@ -56,6 +57,9 @@ export class Auth extends BaseEntity {
 
     @OneToMany(() => Transport, (transport) => transport.auth)
     transport: Transport[]
+
+      @OneToMany(() => Location, (location) => location.auth)
+     location: Location[] 
 
 }
 

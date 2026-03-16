@@ -1,6 +1,7 @@
 import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { Auth } from '../../auth/entities/auth.entity';
 import { BaseEntity } from 'src/database/base.entity';
+import { Location } from 'src/module/loacation/entities/loacation.entity';
 
 export enum TransportType {
   BUS = 'bus',
@@ -33,4 +34,9 @@ export class Transport extends BaseEntity {
   @ManyToOne(() => Auth, (auth) => auth.transport)
   @JoinColumn({ name: 'auth_id' })
   auth: Auth;
+
+   @ManyToOne(() =>Location, (location) => location.transport )
+    @JoinColumn({name: "location_id"})
+    location: Location
+  
 }
