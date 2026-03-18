@@ -41,4 +41,24 @@ export class GuideController {
   remove(@Param('id') id: string) {
     return this.guideService.remove(+id);
   }
+// deactivate qilish
+@Patch('deactivate/:id')
+deactivate(@Param('id') id: string) {
+  const guide = this.guideService.find(g => g.id === +id);
+  if (!guide) return { message: 'Not found' };
+
+  guide.isActive = false;
+  return guide;
+}
+
+// activate qilish
+@Patch('activate/:id')
+activate(@Param('id') id: string) {
+  const guide = this.guideService.find(g => g.id === +id);
+  if (!guide) return { message: 'Not found' };
+
+  guide.isActive = true;
+  return guide;
+}
+
 }
