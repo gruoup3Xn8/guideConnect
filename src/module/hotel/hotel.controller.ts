@@ -31,4 +31,16 @@ export class HotelController {
   remove(@Param('id') id: string) {
     return this.hotelService.remove(+id);
   }
+
+  // deactivate qilish
+  @Patch('deactivate/:id')
+  deactivate(@Param('id') id: string) {
+    return this.hotelService.deactivate(+id);
+  }
+
+  // activate qilish
+  @Patch('activate/:id')
+  activate(@Param('id') id: string) {
+    return this.hotelService.activate(+id);
+  }
 }
