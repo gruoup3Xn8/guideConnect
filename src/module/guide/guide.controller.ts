@@ -22,6 +22,16 @@ export class GuideController {
     return this.guideService.findOne(+id);
   }
 
+  @Get('search/:id')
+  searchId(@Param('id') id: string) {
+    return this.guideService.searchId(id);
+  }
+
+  @Get('check/:id')
+  checkGuide(@Param('id') id: string) {
+    return this.guideService.checkGuide(id);
+  }
+  
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateGuideDto: UpdateGuideDto) {
     return this.guideService.update(+id, updateGuideDto);
@@ -31,4 +41,24 @@ export class GuideController {
   remove(@Param('id') id: string) {
     return this.guideService.remove(+id);
   }
+// deactivate qilish
+@Patch('deactivate/:id')
+deactivate(@Param('id') id: string) {
+  const guide = this.guideService.find(g => g.id === +id);
+  if (!guide) return { message: 'Not found' };
+
+  guide.isActive = false;
+  return guide;
+}
+
+// activate qilish
+@Patch('activate/:id')
+activate(@Param('id') id: string) {
+  const guide = this.guideService.find(g => g.id === +id);
+  if (!guide) return { message: 'Not found' };
+
+  guide.isActive = true;
+  return guide;
+}
+
 }
